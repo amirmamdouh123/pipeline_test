@@ -44,13 +44,15 @@ stages{
 
 
    post {
-
+    always{
    echo  "Nice, I love you <3 ."
-}
-
+   }
+   }
   }
 }
 }
+
+
 
 
 
