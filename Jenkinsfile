@@ -13,7 +13,7 @@ pipeline {
 //   }
 // }
 
-
+stages{
  stage('pull github repo') {
     steps {
         git 'https://github.com/amirmamdouh123/pipeline_test'    
@@ -49,6 +49,7 @@ pipeline {
 }
 
   }
+}
 }
 
 
