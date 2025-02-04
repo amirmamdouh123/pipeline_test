@@ -25,7 +25,7 @@ stage('github login'){
            
  	    
     withCredintials([usernameColonPassword(credentialsId:'dockerhublogin' , variable: 'PASSWORD')]){
-           docker login -u amirmamdouh123 -p $PASSWORD
+          sh 'docker login -u amirmamdouh123 -p $PASSWORD'
      }
 
     }
@@ -34,17 +34,17 @@ stage('github login'){
  stage('process dockerfile and push ') {
      steps {
 
-     docker build -t amirmamdouh123/test-pipeline .
+     sh 'docker build -t amirmamdouh123/test-pipeline .'
      
-     docker run -itd --name test-pipeline  amirmamdouh123/test-pipeline 
+     sh 'docker run -itd --name test-pipeline  amirmamdouh123/test-pipeline' 
 
-     docker push amirmamdouh123/test-pipeline
+     sh 'docker push amirmamdouh123/test-pipeline'
     }
 
 
    post {
 
-   echo "Nice, I love you <3 ."
+   sh 'echo "Nice, I love you <3 ."'
 }
 
   }
