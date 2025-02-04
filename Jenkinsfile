@@ -2,21 +2,21 @@ pipeline {
     agent any
 
 
-stage('github login'){
- steps {
+// stage('github login'){
+//  steps {
     	
 
-//    withCredentials([username:$username , password:$password]){
-//           git login -u $username -p password
-//     }
+// //    withCredentials([username:$username , password:$password]){
+// //           git login -u $username -p password
+// //     }
 
-  }
-}
+//   }
+// }
 
 
  stage('pull github repo') {
     steps {
-        git url: 'https://github.com/amirmamdouh123/pipeline_test'    
+        git 'https://github.com/amirmamdouh123/pipeline_test'    
   } 
 }
 
