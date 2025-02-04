@@ -15,7 +15,7 @@ stage('github login'){
 
  stage('pull github repo') {
     steps {
-        sh 'git clone https://github.com/amirmamdouh123/pipeline_test'    
+        git url: 'https://github.com/amirmamdouh123/pipeline_test'    
   } 
 }
 
