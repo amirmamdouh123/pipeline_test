@@ -25,8 +25,8 @@ stages{
      steps {
            
  	    
-    withCredintials([usernameColonPassword(credentialsId:'dockerhublogin' , variable: 'PASSWORD')]){
-          sh 'docker login -u amirmamdouh123 -p $PASSWORD'
+    withCredintials([usernamePassword(credentialsId:'dockerhublogin' , usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+          sh 'docker login -u $USERNAME -p $PASSWORD'
      }
 
     }
@@ -51,9 +51,4 @@ stages{
   }
 }
 }
-
-
-
-
-
 
