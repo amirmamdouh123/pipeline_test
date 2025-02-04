@@ -30,7 +30,7 @@ pipeline {
      }
 
     }
-  }
+
 
  stage('process dockerfile and push ') {
      steps {
@@ -49,6 +49,7 @@ pipeline {
 }
 
   }
+}
 
 
 
