@@ -15,7 +15,7 @@ stage('github login'){
 
  stage('pull github repo') {
     steps {
-        git pull <github-repo>    
+        git pull https://github.com/amirmamdouh123/pipeline_test    
   } 
 }
 
