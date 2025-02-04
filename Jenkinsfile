@@ -45,7 +45,7 @@ stages{
 
    post {
 
-   sh 'echo "Nice, I love you <3 ."'
+   echo  "Nice, I love you <3 ."
 }
 
   }
