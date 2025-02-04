@@ -1,54 +1,33 @@
 pipeline {
     agent any
 
+    stages {
+        stage('pull github repo') {
+            steps {
+                git 'https://github.com/amirmamdouh123/pipeline_test'
+            }
+        }
 
-// stage('github login'){
-//  steps {
-    	
+        stage('login in dockerhub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhublogin', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh 'docker login -u $USERNAME -p $PASSWORD'
+                }
+            }
+        }
 
-// //    withCredentials([username:$username , password:$password]){
-// //           git login -u $username -p password
-// //     }
-
-//   }
-// }
-
-stages{
- stage('pull github repo') {
-    steps {
-        git 'https://github.com/amirmamdouh123/pipeline_test'    
-  } 
-}
-
-
- stage('login in dockerhub') {
-     steps {
-           
- 	    
-    withCredintials([usernamePassword(credentialsId:'dockerhublogin' , usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-          sh 'docker login -u $USERNAME -p $PASSWORD'
-     }
-
-    }
- }
-
- stage('process dockerfile and push ') {
-     steps {
-
-     sh 'docker build -t amirmamdouh123/test-pipeline .'
-     
-     sh 'docker run -itd --name test-pipeline  amirmamdouh123/test-pipeline' 
-
-     sh 'docker push amirmamdouh123/test-pipeline'
+        stage('process dockerfile and push') {
+            steps {
+                sh 'docker build -t amirmamdouh123/test-pipeline .'
+                sh 'docker run -itd --name test-pipeline amirmamdouh123/test-pipeline'
+                sh 'docker push amirmamdouh123/test-pipeline'
+            }
+        }
     }
 
-
-   post {
-    always{
-   echo  "Nice, I love you <3 ."
-   }
-   }
-  }
+    post {
+        always {
+            sh 'echo "Nice, I love you <3 ."'
+        }
+    }
 }
-}
-
