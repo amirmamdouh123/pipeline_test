@@ -11,6 +11,7 @@ stage('github login'){
 //     }
 
   }
+}
 
 
  stage('pull github repo') {
