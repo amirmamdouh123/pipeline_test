@@ -27,7 +27,7 @@ pipeline {
         stage('deploy on minikube cluster'){
 
         steps{
-            sh 'kubectl get pods'
+               sh 'kubectl get pods --kubeconfig $KUBECONFIG'
         }
     }
     }
