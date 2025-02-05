@@ -23,6 +23,12 @@ pipeline {
                 sh 'docker push amirmamdouh123/test-pipeline'
             }
         }
+
+        stage('deploy on minikube cluster')
+
+        steps{
+            sh 'kubectl get pods'
+        }
     }
 
     post {
