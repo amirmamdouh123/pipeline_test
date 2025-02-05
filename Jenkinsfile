@@ -30,6 +30,7 @@ pipeline {
             sh 'kubectl get pods'
         }
     }
+    }
 
     post {
         always {
