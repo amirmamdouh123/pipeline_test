@@ -19,7 +19,7 @@ pipeline {
         stage('process dockerfile and push') {
             steps {
                 sh 'docker build -t amirmamdouh123/test-pipeline .'
-                sh 'docker run -itd --name test-pipeline amirmamdouh123/test-pipeline'
+                // sh 'docker run -itd --name test-pipeline amirmamdouh123/test-pipeline'
                 sh 'docker push amirmamdouh123/test-pipeline'
             }
         }
