@@ -26,11 +26,11 @@ pipeline {
 
         stage('deploy on minikube cluster'){
 
-        steps{
-            withCredentials([file(credentialsId: 'KUBECONFIG' , variable: 'KUBECONFIG')])
-               sh 'kubectl get pods --kubeconfig $KUBECONFIG'
-        }
+steps {
+    withCredentials([file(credentialsId: 'KUBECONFIG', variable: 'KUBECONFIG')]) {
+        sh 'kubectl get pods --kubeconfig $KUBECONFIG'
     }
+}
     }
 
     post {
